@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'semanticui_jq_cdn.html' %}
+    <title>
+        {%block title%}
+
+        {%endblock %}
+    </title>
+
+
+</head>
+
+<body>
+
+    <div class="ui  container">
+        <br><br>
+
+
+        <div style="margin: 120px;">
+
+            <h1 class="ui center aligned header ">
+                {%block statusCode%}
+
+                {%endblock %}
+            </h1>
+
+            <h1 class="ui sub center aligned header ">
+                {%block errormessage%}
+
+                {%endblock %}</h1>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

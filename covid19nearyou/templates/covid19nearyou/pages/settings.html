@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+
+{%block title%}
+Settings
+{%endblock %}
+
+{%block pageName%}
+Configurations
+{%endblock %}
+
+{%block content%}
+
+<p>Change these according to your requirements . Goto covid19/settings.py</p>
+<p>Default settings like country name ,boundry, web link and map center points configured for Pakistan. </p>
+
+<h2 class="ui header ">COUNTRY </h2>
+<div class="ui  statistics tiny">
+    <div class="statistic">
+        <div class="label">
+            {{COUNTRY_NAME}}
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+<div class="ui divider"></div>
+<h2 class="ui header ">RADIUS RANGES</h2>
+<div class="ui  statistics tiny">
+    <div class="statistic">
+        <div class="value">
+            {{FIRST_RANGE_CIRCLE}} {{RANGE_IN_UNITS}}
+        </div>
+        <div class="label">
+            First Radius Range
+        </div>
+    </div>
+
+    <div class="statistic">
+        <div class="value">
+            {{SECOND_RANGE_CIRCLE}} {{RANGE_IN_UNITS}}
+        </div>
+        <div class="label">
+            Second Radius Range
+        </div>
+    </div>
+
+    <div class="statistic">
+        <div class="value">
+            {{THIRD_RANGE_CIRCLE}} {{RANGE_IN_UNITS}}
+        </div>
+        <div class="label">
+            Third Radius Range
+        </div>
+    </div>
+
+</div>
+<br>
+<br>
+
+<div class="ui divider"></div>
+<h2 class="ui header ">QUARANTINE RADIUS RANGE</h2>
+
+<div class="ui  statistics tiny">
+    <div class="statistic">
+        <div class="value">
+            {{QUARANTINE_RADIUS_RANGE}}
+        </div>
+        <div class="label">
+            {{QUARANTINE_RADIUS_RANGE_UNIT}} radius range
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+<div class="ui divider"></div>
+<h2 class="ui header ">MAP CENTER POINT</h2>
+<div class="ui  statistics tiny">
+    <div class="ui statistic">
+        <div class="value">
+            {{MAP_CENTER_POINT_LATITUDE}}
+        </div>
+        <div class="label">
+            Latitude
+        </div>
+    </div>
+
+    <div class="ui statistic">
+        <div class="value">
+            {{MAP_CENTER_POINT_MAGNITUDE}}
+        </div>
+        <div class="label">
+            Longitude
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+<div class="ui divider"></div>
+<h2 class="ui header ">
+    {{COUNTRY_NAME}} BOUNDRY </h2>
+<div class="ui  statistics tiny">
+    <div class="statistic">
+        <div class="value">
+            {{REGION_BOUNDRY_MIN_LATITUDE}}
+        </div>
+        <div class="label">
+            Min Latitude
+        </div>
+    </div>
+
+    <div class="statistic">
+        <div class="value">
+            {{REGION_BOUNDRY_MAX_LATITUDE}}
+        </div>
+        <div class="label">
+            Max Latitude
+        </div>
+    </div>
+    <div class="statistic">
+        <div class="value">
+            {{REGION_BOUNDRY_MIN_LONGITUDE}}
+        </div>
+        <div class="label">
+            Min longitude
+        </div>
+    </div>
+    <div class="statistic">
+        <div class="value">
+            {{REGION_BOUNDRY_MAX_LONGITUDE}}
+        </div>
+        <div class="label">
+            Max longitude
+        </div>
+    </div>
+</div>
+
+
+<br><br>
+
+<div class="ui divider"></div>
+<h2 class="ui header ">
+    <pre>INCUBATION       BATCH SIZE    FILE UPDATE TIME </pre>
+</h2>
+<div class="ui  statistics tiny">
+    <div class="statistic">
+        <div class="value">
+            {{COVID19_INCUBATION_PERIOD_FOR_EXPIRE_POINT}} days
+        </div>
+        <div class="label">
+            Region Incubation Peroid
+        </div>
+    </div>
+    <div class="statistic">
+        <div class="value">
+            {{LOCATION_CACHE_BATCH_SIZE}} records
+        </div>
+        <div class="label">
+            Batch size for Redis
+        </div>
+    </div>
+
+    <div class="statistic">
+        <div class="value">
+            {{COVID19_UPDATE_DATA_TIME}} Hours
+        </div>
+        <div class="label">
+            FILE UPDATE TIME
+        </div>
+    </div>
+
+</div>
+
+<br>
+<br>
+<div class="ui divider"></div>
+<h2 class="ui  header ">WEB LINKS</h2>
+
+<div class="ui list">
+    <div class="item">
+        <a class="header">{{WHO_WEBSITE_LINK_NAME}} (World Health Organization) -</a>
+        <div class="description">
+            <a href="{{WHO_WEBSITE_LINK}}">{{WHO_WEBSITE_LINK}}</a>.
+        </div>
+    </div>
+    <div class="item">
+        <a class="header">{{MY_COUNTRY_COVID19_WEB_LINK_NAME}} </a>
+        <div class="description">
+            <a href="{{MY_COUNTRY_COVID19_WEB_LINK}}">{{MY_COUNTRY_COVID19_WEB_LINK}}</a>
+        </div>
+    </div>
+</div>
+<br><br>
+
+{%endblock %}

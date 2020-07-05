@@ -1,0 +1,22 @@
+{% if nearest_covid19_point %}
+
+        {% if nearest_covid19_point.red == 0 %}
+
+                    {% include 'covid19nearyou/templates/locations/nearest_confirmed_case_point_template.html' %}
+
+        {% elif nearest_covid19_point.yellow == 1 %}
+
+                    {% include 'covid19nearyou/templates/locations/nearest_confirmed_case_point_template.html' %}
+
+        {% elif nearest_covid19_point.green == 2 %}
+
+                    {% include 'covid19nearyou/templates/locations/nearest_confirmed_case_point_template.html' %}
+        
+       
+
+        {%endif%}
+
+{%endif%}
+
+{% include 'covid19nearyou/templates/points_in_radius_template.html' %}
+{% include 'covid19nearyou/templates/locations/nearest_quarantine_template.html' %}

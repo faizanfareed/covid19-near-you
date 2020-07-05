@@ -1,0 +1,22 @@
+<div class="ui grid stackable doubling   container" style="margin-top: 5px;">
+
+    {% if nearest_covid19_point or nearest_covid19_quarantine or total_covid19_points_near_you %}
+
+    <div class="nine wide  column  ">
+        {% include 'covid19nearyou/templates/points_template.html' %}
+    </div>
+    
+    <div class="seven wide  column ">
+        {% include 'covid19nearyou/templates/advices/all_advices_template.html' %}
+    </div>
+
+    {%else%}
+
+    <div class="seven wide  column ">
+        {% include 'covid19nearyou/templates/advices/all_advices_template.html' %}
+    </div>
+
+    {%endif %}
+
+
+</div>

@@ -1,0 +1,137 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+ {% include 'semanticui_jq_cdn.html' %}
+
+    <title>
+        {%block title%}
+
+        {%endblock %}
+    </title>
+
+
+</head>
+
+<body>
+
+    <div class="ui  container">
+        <br><br>
+
+        <h1 class="ui header">
+            {%block pageName%}
+
+        {%endblock %}
+    </h1>
+   
+        <div class="ui big breadcrumb">
+
+            {% with request.resolver_match.url_name as url_name %}
+            <div class="{% if url_name == 'dashboard' %}active{% endif %} section">
+
+                <a  href="{% url 'dashboard' %}">Dashboard</a>
+            </div>
+
+            <div class="divider"> | </div>
+            <div class="{% if url_name == 'admin:index' %}active{% endif %} section">
+
+                <a href="{% url 'admin:index' %}"> Admin
+                    Pannel</a>
+            </div>
+
+            <div class="divider">| </div>
+
+            <div class="{% if url_name == 'index_map' %}active{% endif %} section">
+                <a href="{% url 'index_map' %}">COVID-19
+                    MAP</a>
+            </div>
+
+            <div class="divider">| </div>
+            <div class="{% if url_name == 'settings_config' %}active{% endif %} section">
+
+                <a href="{% url 'settings_config' %}">Configuration</a>
+            </div>
+
+            <div class="divider"> | </div>
+
+
+        
+
+            <div class="{% if url_name == 'help' %}active{% endif %}  section">
+                <a href="{% url 'help' %}">Help</a>
+            </div>
+
+
+            
+
+            {% if url_name == 'Add_To_File_New_And_Expire_Old_Covid19_Locations' %}
+
+            <div class="divider"> | </div>
+
+
+            <div class="active  section">
+            
+                <a href="{% url 'Add_To_File_New_And_Expire_Old_Covid19_Locations' %}">Add and delete points</a> 
+            </div>
+            
+            
+            
+            {% endif %}
+
+            {% if url_name == 'Cache_Failed_Add_Geospatial_Data_Into_Cache' %}
+
+            <div class="divider"> | </div>
+
+
+            <div class="active  section">
+            
+                <a href="{% url 'Cache_Failed_Add_Geospatial_Data_Into_Cache' %}">Add into Redis database</a> 
+            </div>
+
+
+
+          
+
+          
+            
+            
+            
+            {% endif %}
+
+
+
+
+
+
+
+            {% endwith %}
+            <div class="divider"> | </div>
+
+            <div class="  section">
+            
+                <a class="section" href="{% url 'admin:logout' %}">
+                    Logout
+                </a>
+            </div>
+
+
+
+
+
+        </div>
+        <div class="ui divider"></div>
+        
+        {%block content%}
+
+        {%endblock %}
+    </div>
+    <script src="{% static 'js/base.js' %}" type="text/javascript"></script>
+
+</body>
+
+
+
+
+</html>

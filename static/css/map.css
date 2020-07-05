@@ -1,0 +1,133 @@
+html,
+body {
+    margin: 0;
+    height: 100%;
+    padding: 0;
+ 
+
+}
+
+
+
+.custom-card{
+    border: 1px solid #e5e7e9;
+    padding: 20px 10px  15px 10px; 
+    border-radius: 10px;
+   
+     margin-top: 0px;
+     margin-bottom: 10px;
+
+
+}
+
+.point-custom-card{
+    border: 1px solid #e5e7e9;
+    padding: 20px 20px  25px 20px; 
+    border-radius: 5px;
+   
+     margin-top: 0px;
+     margin-bottom: 10px;
+
+
+}
+
+
+
+p {
+    font: 1em sans-serif;
+ 
+}
+
+.point-title{
+    color: #2d4047;
+}
+
+.IconColor {
+    color: #2d4047;
+   
+}
+
+.nearest-point-design{
+    margin-left: 8px;
+    font-size: 15px;
+    color: #2d4047;
+}
+
+
+#brandIconColor{
+    color: #6980f5;
+}
+
+ h2.ui.header {
+    font-size: 1.71428571rem;
+   
+} 
+
+
+#map {
+    position: relative;
+    top: 10;
+    bottom: 0;
+    width: 100%;
+
+     height: 40vh; 
+  
+
+
+}
+
+.ring-container {
+    position: relative;
+}
+
+.circle {}
+
+.ringring {
+    border: 7px solid #ef5350;
+    -webkit-border-radius: 50px;
+    height: 0px;
+    width: 0px;
+    position: absolute;
+
+    -webkit-animation: pulsate 1s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    opacity: 0.0
+}
+
+.quarantineringring {
+    border: 7px solid #2196f3;
+    -webkit-border-radius: 50px;
+    height: 0px;
+    width: 0px;
+    position: absolute;
+
+    -webkit-animation: pulsate 1s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    opacity: 0.0
+}
+
+
+
+@-webkit-keyframes pulsate {
+    0% {
+        -webkit-transform: scale(0.1, 0.1);
+        opacity: 0.0;
+    }
+
+    50% {
+        opacity: 1.0;
+    }
+
+    100% {
+        -webkit-transform: scale(1.2, 1.2);
+        opacity: 0.0;
+    }
+}
+
+.collapsed.row.stretched {
+    margin: 0 1rem;
+}
+
+.collapsed.row.stretched .column {
+    padding: 0;
+}

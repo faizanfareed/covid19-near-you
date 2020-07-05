@@ -1,0 +1,35 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('COVID-19 NEAR YOU ADMIN') }}{% endblock %}
+
+
+
+
+{% block branding %}
+
+
+
+
+<h1 
+ id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('COVID-19 NEAR YOU ADMIN') }}</a></h1>
+
+
+
+{% endblock %}
+
+       
+
+
+
+
+{% block extrastyle %}
+
+ 
+ <link rel='stylesheet' href="{% static 'css/admin.css' %}"> 
+
+{% endblock %}
+
+
+
+{% block nav-global %}{% endblock %}

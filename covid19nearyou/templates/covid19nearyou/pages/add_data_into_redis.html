@@ -1,0 +1,223 @@
+{% extends 'base.html' %}
+
+{%block title%}
+Add data into Redis  
+{%endblock %}
+
+{%block pageName%}
+Adding data into Redis Database
+        {%endblock %}
+
+{%block content%}
+
+                <br>
+                {%if message%}
+
+                <h1>{{message}}</h1>
+
+                {%endif%}
+
+                {%if form%}
+
+                <div class="ui  statistic small ">
+
+                    <div class="value">
+                        {{location_points}}
+                    </div>
+
+                    Location Points
+
+                </div>
+
+                <div class="ui  statistic small ">
+                    <div class="value">
+                        {{location_batches}}
+                    </div>
+                    Location Batches
+                </div>
+
+
+                <div class="ui  statistic small ">
+                    <div class="value">
+                        {{qurantine_points}}
+                    </div>
+
+                    Quarantine Points
+
+                </div>
+
+                <div class="ui  statistic small ">
+
+                    <div class="value">
+                        {{qurantine_batches}}
+                    </div>
+
+                    Quarantine Batches
+
+                </div>
+
+                <form class="ui form" method="POST">
+                    {{form.as_p}}
+                    {% csrf_token %}
+
+                    <input type="hidden" name="location_batches" value="{{location_batches}}">
+                    <input type="hidden" name="location_points" value="{{location_points}}">
+                    <input type="hidden" name="qurantine_batches" value="{{qurantine_batches}}">
+                    <input type="hidden" name="qurantine_points" value="{{qurantine_points}}">
+
+                    <button class="ui button" name='createbtach' type="submit">Create batches</button>
+
+                </form>
+                <br>
+                <p>1 batch consist of {{LOCATION_CACHE_BATCH_SIZE}} records.</p>
+
+                {%endif%}
+
+                {%if Batch_Manager_Object %}
+
+                <table class="ui striped table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Created at</th>
+                            <th>Status</th>
+                            <th>Location Batch status</th>
+                            <th>Quarantine Batch status</th>
+                            <th>Location Points</th>
+                            <th>Quarantine Points </th>
+
+                            <th>Location Batches</th> 
+                            <th>Quarantine Batches</th> 
+                         
+                            <th> Compeleted Location Batches </th> 
+                            <th> Compeleted Quarantine Batches </th> 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{Batch_Manager_Object.id}}</td>
+
+                            <td>{{Batch_Manager_Object.created_at}}</td>
+                            <td>{{Batch_Manager_Object.is_finshed}}</td>
+                            <td>{{Batch_Manager_Object.is_location_batches_completed}}</td>
+                        
+                            <td>{{Batch_Manager_Object.is_quarantine_batches_completed}}</td>
+                            <td>{{Batch_Manager_Object.location_points}}</td>
+                            <td>{{Batch_Manager_Object.qurantine_points}}</td>
+
+                            <td>{{Batch_Manager_Object.location_batches}}</td>
+                            <td>{{Batch_Manager_Object.qurantine_batches}}</td>
+                            <td>{{Batch_Manager_Object.location_completed_batches}}</td>
+                            <td>{{Batch_Manager_Object.qurantine_completed_batches}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Lcoation Batch Table and Form -->
+                {% if Location_Batches%}
+                <table class="ui selectable inverted table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Batch no </th>
+                            <th>Compeleted</th>
+                            <th>Start range</th>
+                            <th>End range</th>
+                            <th>Process</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for batch in Location_Batches%}
+
+                        {%if batch.id == Location_batch_not_completed_Id%}
+
+                        <form class="ui form" method="POST">
+                            {% csrf_token %}
+
+                            <input type="hidden" name="Location_batch_not_completed_Id" value="{{batch.id}}">
+                            <tr>
+
+                                <td> {{batch.id}}</td>
+                                <td> {{batch.batch_no}}</td>
+
+                                <td> {{batch.is_completed}}</td>
+
+                                <td> {{batch.range_start}}</td>
+                                <td> {{batch.range_end}}</td>
+                                <td> <button class="ui button" name='process_location_batch' type="submit">Start</button></td>
+                            </tr>
+                        </form>
+
+                        {%else%}
+                        <tr>
+
+                            <td> {{batch.id}}</td>
+                            <td> {{batch.batch_no}}</td>
+                            <td> {{batch.is_completed}}</td>
+                            <td> {{batch.range_start}}</td>
+                            <td> {{batch.range_end}}</td>
+                            <td> <button class="ui button" name='step1' disabled type="submit">Start</button></td>
+
+                        </tr>
+                        {%endif%}
+
+                        {%endfor%}
+                    </tbody>
+                </table>
+
+                {%endif%}
+
+                <!-- Lcoation Bathc Table form end here -->
+                {% if Quarantine_Batches%}
+
+                <table class="ui selectable inverted table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Batch no </th>
+                            <th>Compeleted</th>
+                            <th>Start range</th>
+                            <th>End range</th>
+                            <th>Process</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for batch in Quarantine_Batches%}
+
+                        {%if batch.id == Quarantine_batch_not_completed_Id%}
+
+                        <form class="ui form" method="POST">
+                            {% csrf_token %}
+
+                            <input type="hidden" name="Quarantine_batch_not_completed_Id" value="{{batch.id}}">
+                            <tr>
+                                <td> {{batch.id}}</td>
+                                <td> {{batch.batch_no}}</td>
+                                <td> {{batch.is_completed}}</td>
+                                <td> {{batch.range_start}}</td>
+                                <td> {{batch.range_end}}</td>
+                                <td> <button class="ui button" name='process_quarantine_batch' type="submit">Start</button></td>
+                            </tr>
+                        </form>
+
+
+
+                        {%else%}
+                        <tr>
+
+                            <td> {{batch.id}}</td>
+                            <td> {{batch.batch_no}}</td>
+                            <td> {{batch.is_completed}}</td>
+                            <td> {{batch.range_start}}</td>
+                            <td> {{batch.range_end}}</td>
+                            <td> <button class="ui button" name='step1' disabled type="submit">Start</button></td>
+                        </tr>
+                        {%endif%}
+
+                        {%endfor%}
+                    </tbody>
+                </table>
+
+                {%endif%}
+                {%endif%} 
+        {%endblock %}

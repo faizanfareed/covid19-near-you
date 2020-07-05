@@ -1,0 +1,112 @@
+{%if total_covid19_points_near_you or total_covid19_points_near_you == 0 %}
+<div class="point-custom-card">
+
+    <h2 class="ui header  ">POINTS IN RADIUS </h2>
+
+    <div class="ui grid  stackable doubling  ">
+        <div class=" five wide    column">
+
+            {%if total_covid19_points_near_you > 1 %}
+
+            <div class="ui statistic tiny ">
+
+                <div class="value " style="color: #ef5350;">
+                    {{total_covid19_points_near_you}}
+                </div>
+                <div class="label">
+                    POINTS AROUND YOU
+                </div>
+            </div>
+
+
+            {%elif total_covid19_points_near_you  == 1 or total_covid19_points_near_you == 0 %}
+
+            <div class="ui statistic tiny ">
+
+                <div class="value" style="color: #ef5350;">
+                    {{total_covid19_points_near_you}}
+                </div>
+                <div class="label">
+                    POINT AROUND YOU
+                </div>
+            </div>
+
+            {%endif%}
+
+        </div>
+        <div class=" five wide     column ">
+
+            {%if total_covid19_points_near_you  == 0 or total_covid19_points_near_you %}
+
+            <div class="ui statistic tiny   ">
+
+                <div class="value" style="color: #6980f5;">
+                    {{THIRD_RANGE_CIRCLE}}
+                </div>
+                <div class="label">
+                    {{RANGE_IN_UNITS}} range circle
+                </div>
+
+            </div>
+
+            {%endif%}
+        </div>
+
+        <div class="five wide column">
+
+            {%if covid19_point_list%}
+
+            {% for point in covid19_point_list%}
+
+            {% if point.0.radius_range_in_km == 1  %}
+
+            <div class="ui statistic  tiny red ">
+                <div class="value ">
+
+                    {{point.0.total_effected_zone}}
+
+                </div>
+
+                <div class="label">
+                    {{point.0.radius_range_in_km}} km
+                </div>
+
+            </div>
+            {% elif point.0.radius_range_in_km == 2  %}
+
+
+            <div class="ui statistic  tiny  yellow">
+                <div class="value ">
+
+                    {{point.0.total_effected_zone}}
+
+                </div>
+
+                <div class="label">
+                    {{point.0.radius_range_in_km}} km
+                </div>
+
+            </div>
+
+            {% elif point.0.radius_range_in_km == 3  %}
+
+            <div class="ui statistic  tiny green">
+                <div class="value ">
+
+                    {{point.0.total_effected_zone}}
+
+                </div>
+
+                <div class="label">
+                    {{point.0.radius_range_in_km}} km
+                </div>
+
+            </div>
+            {%endif%}
+            {%endfor%}
+            {%endif%}
+        </div>
+    </div>
+</div>
+
+{%endif%}

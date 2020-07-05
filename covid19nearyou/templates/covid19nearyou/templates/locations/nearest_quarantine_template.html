@@ -1,0 +1,24 @@
+{%if nearest_covid19_quarantine%}
+
+<div class="point-custom-card">
+    <h2 class="ui header pointtitle "> NEAREST QUARANTINE CENTER</h2>
+
+
+    <i class="map marker large alternate icon IconColor"></i>
+    <span class="nearest-point-design"> {{nearest_covid19_quarantine.address}}
+    </span>
+    <p></p>
+    <i class="circle large outline icon IconColor"></i>
+    <span class="nearest-point-design"> {{QUARANTINE_RADIUS_RANGE}}
+        {{QUARANTINE_RADIUS_RANGE_UNIT}}
+        radius range
+    </span>
+
+    <p></p>
+    <i class="flag large checkered icon IconColor"></i>
+    <span class="nearest-point-design">
+        {{nearest_covid19_quarantine.distance}} Km
+        distance
+    </span>
+</div>
+{%endif%}

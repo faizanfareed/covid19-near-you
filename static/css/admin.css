@@ -1,0 +1,140 @@
+
+/* 
+ HEADER */ 
+
+
+
+#header {
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    background-color: #6980f5;
+    color: #fff;
+    overflow: hidden; 
+    
+}
+.module h2, .module caption, .inline-group h2 {
+    background-color: #6980f5;
+    opacity: 0.8;
+  }
+
+
+a:link, a:visited {
+    color:#6980f5;
+    opacity: 0.8;
+  }
+
+  div.breadcrumbs {
+    background: #6980f5;
+   
+  }
+#header a:focus , #header a:hover {
+    text-decoration: underline;
+}
+
+#branding {
+    float: left;
+}
+
+#branding h1 {
+    padding: 0;
+    margin: 0 20px 0 0;
+    font-weight: 300;
+    font-size: 24px;
+    color: #fff;
+}
+
+#branding h1, #branding h1 a:link, #branding h1 a:visited {
+    color: #fff;
+}
+
+#branding h2 {
+    padding: 0 10px;
+    font-size: 14px;
+    margin: -8px 0 8px 0;
+    font-weight: normal;
+    color: #fff;
+}
+
+#branding a:hover {
+    text-decoration: none;
+}
+
+#user-tools {
+    float: right;
+    padding: 0;
+    margin: 0 0 0 20px;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-align: right;
+    color: #fff;
+}
+
+#user-tools a {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+#user-tools a:focus, #user-tools a:hover {
+    text-decoration: none;
+    border-bottom-color: #fff;
+    color: #fff;
+}
+
+/* 
+* BREADCRUMBS */ 
+
+div.breadcrumbs {
+    background:white;
+    padding: 10px 40px;
+    border: none;
+    font-size: 14px;
+    color: #6980f5;
+    text-align: left;
+}
+
+div.breadcrumbs a {
+    color: #6980f5;
+}
+
+div.breadcrumbs a:focus, div.breadcrumbs a:hover {
+    color:#6980f5;
+}
+
+
+
+/* FORM BUTTONS */
+
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: #6980f5;
+  }
+  .button.default, input[type=submit].default, .submit-row input.default {
+    background:#6980f5;
+  }
+  .button:active, input[type=submit]:active, input[type=button]:active, .button:focus, input[type=submit]:focus, input[type=button]:focus, .button:hover, input[type=submit]:hover, input[type=button]:hover {
+    background: #6980f5;
+    opacity: 0.8;
+  }
+  .button.default:active, input[type=submit].default:active, .button.default:focus, input[type=submit].default:focus, .button.default:hover, input[type=submit].default:hover {
+    background: #6980f5;
+    opacity: 0.8;
+  }
+
+
+.object-tools a:link, .object-tools a:visited {
+    display: block;
+    float: left;
+    padding: 3px 12px;
+    background: #6980f5;
+    font-weight: 400;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #fff;
+}
+

@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{%block title%}
+How to use
+{%endblock %}
+
+{%block pageName%}
+How to use ?
+{%endblock %}
+
+{%block content%}
+
+You can follow these steps to use COVID-19 NEAR YOU app.
+<p>
+    If you have any suggestions, found bugs, facing issues or start new discussion open issue on github.
+    Fork us on Github
+    .
+</p>
+<h2 class="ui header">Add points (Confirmed case or Qurantine )</h2>
+<p>
+    Goto <a href="{% url 'admin:index' %}"> Admin
+        Pannel</a> select
+    ConfirmedCaseLocation or QurantineCenter model to save points. </p>
+<ul>
+    <li>You can add data points,</li>
+    <li>Delete data points.</li>
+    <li>Can't update ConfirmedCaseLocation points. First you need to delete them then add them.</li>
+</ul>
+<p>
+
+<h2 class="ui header">Create Geospatial file and delete expired points </h2>
+When new points added, then goto <a href="#">Dashboard</a> and follow given instructions.
+</p>
+
+<ul>
+    <li>Geospatial file already exists
+        <ul>
+            <li>If file expired then this link <a href="#">Add new and delete
+                    expired points from Redis and Geospatial File</a> will be visible. Click on this link and follow
+                given instructions. </li>
+        </ul>
+    </li>
+    <li>Geospatial file not exists
+        <ul>
+            <li>These links will be visible <a href="#">Add points into Geospatial
+                    file</a> and <a href="#"> Admin
+                    Pannel</a> select on of them and follow given instructions.
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<p>
+<h2 class="ui header">If data missing in Redis database </h2>
+<p>
+    When data is missing in Redis database then we need to add data into Redis database.
+</p>
+
+<ul>
+    <li>This link <a href="#">Add data into
+            Redis database </a> will redirect to Redis database page.
+        <ul>
+            <ul>
+                <li>Click on <strong>Create batches</strong> button to create batches of points.</li>
+                <ul>
+                    <li>Clik on <strong>Start</strong> button to process
+                        batch. </li>
+                    <ul>
+                        <li>When all batches processed then you will be redirected to <strong>Dashboard page</strong>
+                            then you must need to add points into Geospatial file (if file date expired).
+                            Click on visible link to <a href="#">Add new
+                                and delete
+                                expired points from Redis and Geospatial File</a> and follow given instructions.</li>
+                    </ul>
+                </ul>
+                <ul>
+
+                </ul>
+    </li>
+</ul>
+<p>
+    {%endblock %}

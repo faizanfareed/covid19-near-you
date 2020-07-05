@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{%block title%}
+Add new points
+{%endblock %}
+
+{%block pageName%}
+Add new and remove expired points from Geospatial file.
+{%endblock %}
+
+{%block content%}
+
+<div class="two column row">
+    <div class="column">
+        <!-- Geospatial File Form Section Start -->
+        {%if form%}
+
+        <form class="ui form" method="POST">
+            {% csrf_token %}
+            <h3>Create new Geospatial file</h3>
+            {{form.as_p}}
+            <button class="ui button" name='creategeospatialfile' type="submit">Create</button>
+
+        </form>
+        <br>
+        <p>
+            Geospatial file consisit of Location and Quarantine points to plot data onto Map.
+        </p>
+           <p> Redis database is used to check COVID-19 NEAR YOU.
+        </p>
+        {%endif%}
+
+        <!-- Geospatial File Form Section End -->
+        {% if no_of_locations%}
+
+        <h3>Thier is no record into your database.</h3>
+        <p>Add locations from Admin pannel or Upload location file.</p>
+        {%endif%}
+
+        <!-- Add Points Into File and Remove Old Section Start -->
+        {% if geospatialfile %}
+        <div class="ui ordered steps">
+
+
+            {%if is_step1 %}
+            <div class=" step completed">
+                <div class="content">
+                    <div class="title">Add new points</div>
+                    <div class="description">Add them in Geospatial file</div>
+                </div>
+            </div>
+
+            <div class="step active">
+                <div class="content">
+                    <div class="title">Delete expired points</div>
+                    <div class="description">Delete them from Geospatial file.</div>
+                </div>
+            </div>
+        </div>
+
+        <form class="ui form" method="POST">
+            {% csrf_token %}
+            <h3>Delete expired points </h3>
+            <input type="hidden" name="geoid" value="{{geojsonTask.id}}">
+            <input type="hidden" name="id" value="{{singlepoint.id}}">
+            <button class="ui button" name='step2' type="submit">Delete points</button>
+        </form>
+
+        {%else%}
+
+        <div class=" step active">
+            <div class="content">
+                <div class="title">Add new points</div>
+                <div class="description">Add them in Geospatial file</div>
+            </div>
+        </div>
+
+        <div class="step ">
+            <div class="content">
+                <div class="title">Delete expired points</div>
+                <div class="description">Delete them from Geospatial file.</div>
+            </div>
+        </div>
+    </div>
+
+    <form class="ui form" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{singlepoint.id}}">
+        <button class="ui button" name='step1' type="submit">Start</button>
+    </form>
+    {%endif%}
+    {%endif%}
+    <!-- Add Points Into File and Remove Old Section end -->
+</div>
+{%endblock %}

@@ -1,0 +1,25 @@
+{% if nearest_covid19_point %}
+
+{% if nearest_covid19_point.red == 0 %}
+
+                {% include 'covid19nearyou/templates/advices/red_zone_advices_template.html' %}
+
+{% elif nearest_covid19_point.yellow == 1 %}
+
+            {% include 'covid19nearyou/templates/advices/yellow_zone_advices_template.html' %}
+
+{% elif nearest_covid19_point.green == 2 %}
+
+              {% include 'covid19nearyou/templates/advices/green_zone_advices_template.html' %}
+
+{%elif nearest_covid19_point.no_points == 3%}
+
+
+             {% include 'covid19nearyou/templates/advices/zero_zone_advices_template.html' %}
+{%endif%}
+
+{%endif%}
+
+{% include 'covid19nearyou/templates/advices/who_advices_template.html' %}
+{% include 'covid19nearyou/templates/advices/advice_links_template.html' %}
+{% include 'covid19nearyou/templates/weblinks/country_and_who_web_links_template.html' %}
