@@ -18,70 +18,51 @@ Dashboard
 
 {%if  geospatialfile %}
 
-                    {% include 'covid19nearyou/templates/dashboard/data_updated_at_template.html' %}
-                    {% include 'covid19nearyou/templates/dashboard/geospatial_data_template.html' %}
+{% include 'covid19nearyou/templates/dashboard/data_updated_at_template.html' %}
+{% include 'covid19nearyou/templates/dashboard/geospatial_data_template.html' %}
 
-                <!--Start SECTION Is_need_to_update_points_into_file -->
-                {% if Is_need_to_update_points_into_file and is_need_to_add_data_into_cache or  is_need_to_add_data_into_cache%}
+<!--Start SECTION Is_need_to_update_points_into_file -->
+{% if Is_need_to_update_points_into_file and is_need_to_add_data_into_cache or  is_need_to_add_data_into_cache%}
 
-                                {% include 'covid19nearyou/templates/dashboard/data_missing_template.html' %}
+{% include 'covid19nearyou/templates/dashboard/data_missing_template.html' %}
 
-                {%else%}
-                                {% if Is_need_to_update_points_into_file     %}
+{%else%}
+{% if Is_need_to_update_points_into_file     %}
 
-                                                        <a class="ui red basic label">
-                                                            <h4>Add points into Geospatial File</h4>
-                                                        </a><br> <br>
-                                                        <p>Data points in Geospatial file and Redis database need to be updated.</p>
-                                                        <p>
-                                                            Click here to <a href="{% url 'Add_To_File_New_And_Expire_Old_Covid19_Locations' %}">Add new (or updated ) and
-                                                                delete
-                                                                expired points from Redis and Geospatial File.</a>
-                                                        </p>
+<a class="ui red basic label">
+    <h4>Data points in Geospatial file and Redis database need to be updated.</h4>
+</a><br> <br>
 
-                                                        <p>Geospatial file consisit of Location and Quarantine points to plot data onto Map.</p>
-                                                        <p>Redis database is used to check COVID-19 NEAR YOU.</p>
-                                                        <div class="ui divider"></div>
-                                                        <p>
-                                                            OR
-                                                        </p>
-                                                        <a class="ui green basic label">
-                                                            <h4>If needed add more points .</h4>
-                                                        </a>
-                                                        <p></p>
-                                                        <p>You can add more COVID-19 cases and Quarantine center location points.</p>
+<p>
+    Click here to <a href="{% url 'Add_To_File_New_And_Expire_Old_Covid19_Locations' %}">Add points into Redis and
+        Geospatial file </a>
+</p>
 
-                                                        <p>Click here to add <a class="item" href="{% url 'admin:covid19nearyou_confirmedcaselocation_add' %}">
-                                                                COVID-19 Location
-                                                            </a> points.
-                                                        </p>
 
-                                {%endif%}
+{% include 'covid19nearyou/templates/dashboard/add_more_points_template.html' %}
 
-                {%endif%}
+{%endif%}
+
+{%endif%}
 
 {%else%}
 
 
 <a class="ui red basic label">
-    <h4>Add points into Geospatial file. </h4>
-</a>
-<p></p>
-<a href="{% url 'Add_To_File_New_And_Expire_Old_Covid19_Locations' %}">Add points into Geospatial file.</a>
+    <h4>Data points need to be added into Geospatial file. </h4>
+</a><br> <br>
+
 <p>
-    OR
+    Click here to <a href="{% url 'Add_To_File_New_And_Expire_Old_Covid19_Locations' %}">Add points into
+        Geospatial file </a>
 </p>
-<a class="ui green basic label">
-    <h4>If needed add more points .</h4>
-</a>
-<p></p>
-<p>You can add more COVID-19 cases and Quarantine center location points.</p>
 
-<p>Click here to add <a class="item" href="{% url 'admin:covid19nearyou_confirmedcaselocation_add' %}">
-        COVID-19 Location
-    </a> points.
 
-</p>
+
+
+{% include 'covid19nearyou/templates/dashboard/add_more_points_template.html' %}
+
+
 
 {%endif%}
 
@@ -97,22 +78,15 @@ Dashboard
 {%endif%}
 
 {%if is_cache_miss %}
+
 {% include 'covid19nearyou/templates/dashboard/data_missing_template.html' %}
 
 {%else%}
 
-<a class="ui red basic label">
-    <h4>Add points </h4>
+{% include 'covid19nearyou/templates/dashboard/add_more_points_template.html' %}
 
-</a>
-<p></p>
-<p>Add COVID-19 cases and Quarantine center location points.</p>
 
-<p>Click here to add <a class="item" href="{% url 'admin:covid19nearyou_confirmedcaselocation_add' %}">
-        COVID-19 Location
-    </a> points.
 
-</p>
 {%endif%}
 {%endif%}
 {%endblock %}

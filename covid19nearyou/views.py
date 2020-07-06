@@ -110,6 +110,7 @@ def dashboard(request):
         today = datetime.date.today()
         
         if result[0] == 0 : # Cache Miss 
+            print('HEre ')
             context['is_cache_exist'] = False # Not exist
             geospatialFile_obj = GeospatialFile.objects.filter(is_finshed=True).order_by('-created_at').first()
            
@@ -167,9 +168,6 @@ def is_need_to_add_data_into_cache(pipeline):
         if Location_Points_In_Redis == location_points_In_MYSQL and Quarantine_Points_In_Redis == quarantine_points_In_MYSQL:
             return False
         else:
-            #Add data into Cahce
-            pipeline.execute_command('DEL',REDIS_KEYS.GEOSPATIAL_DATA_KEY)
-            pipeline.execute()
             return True
 
 
@@ -594,7 +592,7 @@ def Cache_Failed_Add_Geospatial_Data_Into_Cache(request):
            
        
             
-    return render(request,'covid19nearyou/pages/add_data_into_redis.html.html',context)
+    return render(request,'covid19nearyou/pages/add_data_into_redis.html',context)
 
 # Function : 2 
 # Add Confirmed Case location batch into Redis database
@@ -604,11 +602,14 @@ def Add_Location_Batch_Into_Cache(batch):
     today = datetime.date.today()
     locationlist = ConfirmedCaseLocation.objects.filter(expire_at__gt=today).all()[batch.range_start:batch.range_end]
    
+    
+   
     con = get_redis_connection("default")
     pipeline = con.pipeline()
     
     for instance in locationlist:
-    
+       
+        
         #GEOSPATIAL INSERTION 
         pipeline.execute_command('GEOADD',REDIS_KEYS.GEOSPATIAL_DATA_KEY,float(instance.longitude),float(instance.latitude),instance.get_redis_key())
         #EXPIRE AND DATA INSERTION
@@ -621,6 +622,7 @@ def Add_Location_Batch_Into_Cache(batch):
         pipeline.expireat(name=instance.get_redis_key(),when=instance.get_expire_at_in_unixtime())
 
     result = pipeline.execute()
+    
    
     
     return result
