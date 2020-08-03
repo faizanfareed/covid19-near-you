@@ -3,3 +3,5 @@ manage.py
 env/ 
 covid19/ 
 media/
+extrarestapi/
+__pycache__/
