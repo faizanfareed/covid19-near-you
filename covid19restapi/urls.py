@@ -8,7 +8,7 @@ from . import views
 
 urlpatterns = [
 
-        path('', views.index, name='restapi'),
+        path('covid19nearyou/', views.index, name='restapi'),
         path('token', views.generate_token, name='generate_token'),
 
 
